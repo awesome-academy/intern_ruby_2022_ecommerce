@@ -42,6 +42,39 @@ class OrdersController < ApplicationController
     redirect_to request.referer
   end
 
+  def filter
+    if params[:filter] == t("static_pages.pending")
+      @pagy, @orders = pagy Order.order_by_user(current_user.id)
+                                 .filter_by_status("Pending")
+    else
+      filter_shipping params[:filter]
+    end
+  end
+
+  def filter_shipping filter
+    if filter == t("static_pages.shipping")
+      @pagy, @orders = pagy Order.order_by_user(current_user.id)
+                                 .filter_by_status("Shipping")
+    elsif filter == t("static_pages.delivered")
+      @pagy, @orders = pagy Order.order_by_user(current_user.id)
+                                 .filter_by_status("Delivered")
+    else
+      filter_reject filter
+    end
+  end
+
+  def filter_reject filter
+    if filter == t("static_pages.rejected")
+      @pagy, @orders = pagy Order.order_by_user(current_user.id)
+                                 .filter_by_status("Rejected")
+    elsif filter == t("static_pages.canceled")
+      @pagy, @orders = pagy Order.order_by_user(current_user.id)
+                                 .filter_by_status("Canceled")
+    else
+      @pagy, @orders = pagy Order.order_by_user(current_user.id).all
+    end
+  end
+
   private
   def order_params
     params.require(:order).permit Order::ORDER_ATTRS

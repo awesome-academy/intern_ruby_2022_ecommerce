@@ -13,6 +13,9 @@ class Order < ApplicationRecord
   delegate :name, to: :user
 
   before_save :update_branch
+  scope :oldest, ->{order created_at: :asc}
+  scope :order_by_user, ->(crep){where user_id: crep}
+  scope :filter_by_status, ->(param){where status: param}
 
   scope :oldest, ->{order created_at: :asc}
   scope :by_user, ->(uid){where user_id: uid}

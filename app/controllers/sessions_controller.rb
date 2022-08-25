@@ -34,7 +34,7 @@ class SessionsController < ApplicationController
     if @user.activated?
       log_in @user
       remember @user
-      if @user.admin?
+      if @user.Admin?
         redirect_to admin_static_pages_path
       else
         redirect_to root_path

@@ -37,6 +37,9 @@ Rails.application.routes.draw do
       member do
         get :change
       end
+      collection do
+        get :filter
+      end
     end
   end
 end

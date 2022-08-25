@@ -20,7 +20,7 @@ module SessionsHelper
   end
 
   def admin_logged_in?
-    current_user.present? and current_user.role == 1
+    current_user.present? and current_user.Admin?
   end
 
   def log_out
