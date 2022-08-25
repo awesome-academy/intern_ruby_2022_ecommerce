@@ -29,7 +29,6 @@ Rails.application.routes.draw do
     resources :products do
       collection do
         get :result
-        get :filter
       end
     end
     resources :carts
