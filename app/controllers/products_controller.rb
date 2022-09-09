@@ -18,4 +18,14 @@ class ProductsController < ApplicationController
     @name = params[:name]
     @pagy, @products = pagy Product.by_name params[:name]
   end
+
+  def filter
+    if params[:filter] == t("static_pages.newest")
+      @pagy, @products = pagy Product.newest
+    elsif params[:filter] == t("static_pages.price_increase")
+      @pagy, @products = pagy Product.order_by_price(:asc)
+    else
+      @pagy, @products = pagy Product.order_by_price(:desc)
+    end
+  end
 end

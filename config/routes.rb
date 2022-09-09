@@ -26,12 +26,16 @@ Rails.application.routes.draw do
     resources :products do
       collection do
         get :result
+        get :filter
       end
     end
     resources :carts
     resources :orders do
       member do
         get :change
+      end
+      collection do
+        get :filter
       end
     end
   end
