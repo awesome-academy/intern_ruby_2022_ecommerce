@@ -1,4 +1,9 @@
 en:
+  ransack:
+    create_day: "Create day"
+    from_date: "From date"
+    to_date: "To date"
+    search: "search"
   devise:
     confirmations:
       confirmed: "Your email address has been successfully confirmed."

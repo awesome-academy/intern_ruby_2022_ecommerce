@@ -22,7 +22,7 @@
                     <%= t("admin.product.price") + @product.price.to_s %>
                   </p>
                   <p class="card-text">
-                    <%= t("admin.product.category") + ": " + @product.category_name %>
+                    <%= t("admin.product.category") + ": " + category_name(@product.category_name) %>
                   </p>
                   <p class="card-text">
                     <%= t("admin.product.quantity") + @product.quantity_in_stock.to_s %>

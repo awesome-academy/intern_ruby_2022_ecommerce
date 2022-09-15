@@ -1,7 +1,8 @@
 class ProductsController < ApplicationController
   def index
-    @products = Product.newest
-    @categories = Category.newest
+    @q = Product.ransack(params[:q])
+    @pagy, @products = pagy(@q.result)
+    @name = params[:q]
   end
 
   def show
@@ -12,10 +13,5 @@ class ProductsController < ApplicationController
 
     flash[:danger] = t "static_pages.product_not_found"
     redirect_to root_path
-  end
-
-  def result
-    @name = params[:name]
-    @pagy, @products = pagy Product.by_name params[:name]
   end
 end

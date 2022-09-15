@@ -17,7 +17,9 @@
         <div class="col text-center">
           <div class="card">
             <div class="card text-white bg-primary">
-              <div class="card-header"><h5><%= t "admin.order.shipping" %></h5></div>
+              <div class="card-header">
+                <h5><%= t "admin.order.shipping" %></h5>
+              </div>
               <div class="card-body">
                 <h3><%= @orders.Shipping.size %></h3>
               </div>
@@ -27,7 +29,9 @@
         <div class="col text-center">
           <div class="card">
             <div class="card text-white bg-success">
-              <div class="card-header"><h5><%= t "admin.order.delivered" %></h5></div>
+              <div class="card-header">
+                <h5><%= t "admin.order.delivered" %></h5>
+              </div>
               <div class="card-body">
                 <h3><%= @orders.Delivered.size %></h3>
               </div>
@@ -37,7 +41,9 @@
         <div class="col text-center">
           <div class="card">
             <div class="card text-white bg-warning">
-              <div class="card-header"><h5><%= t "admin.order.canceled" %></h5></div>
+              <div class="card-header">
+                <h5><%= t "admin.order.canceled" %></h5>
+              </div>
               <div class="card-body">
                 <h3><%= @orders.Canceled.size %></h3>
               </div>
@@ -47,7 +53,9 @@
         <div class="col text-center">
           <div class="card">
             <div class="card text-white bg-danger">
-              <div class="card-header"><h5><%= t "admin.order.rejected" %></h5></div>
+              <div class="card-header">
+                <h5><%= t "admin.order.rejected" %></h5>
+              </div>
               <div class="card-body">
                 <h3><%= @orders.Rejected.size %></h3>
               </div>
@@ -57,13 +65,34 @@
       </div>
     </div>
   </div>
-
   <br>
-
   <div class = "container">
     <div class="card">
       <div class="card-header">
         <h1><%= t "admin.order.orders" %></h1>
+      </div>
+      <div class="container" id="search-submit-padding">
+        <%= search_form_for @search, url: search_admin_orders_path, html: {class: "form-inline col-md-8 col-md-offset-1", method: :post} do |f| %>
+          <div class="container">
+            <div class="row">
+              <div class="col-sm">
+                <%= f.label t("ransack.create_day") %>
+                <%= f.date_field :created_at_eq %>
+              </div>
+              <div class="col-sm">
+                <%= f.label t("ransack.from_date") %>
+                <%= f.date_field :updated_at_gteq %>
+              </div>
+              <div class="col-sm">
+                <%= f.label t("ransack.to_date") %>
+                <%= f.date_field :updated_at_lteq %>
+              </div>
+              <div class="col-sm " id="search-submit-padding">
+                <%= f.submit t("ransack.search"), class: "btn btn-success" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
       </div>
       <div class="card-body">
         <table class = "table table-striped">
@@ -77,9 +106,12 @@
               <th><%= t "admin.order.action" %></th>
             </tr>
           </thead>
-
           <tbody>
-            <%= render @orders2.includes([:user]) %>
+            <% if params.values.third == "Search" %>
+              <%= render @orders3.includes([:user]) %>
+            <% else %>
+              <%= render @orders2.includes([:user]) %>
+            <% end %>
           </tbody>
         </table>
         <%== pagy_bootstrap_nav(@pagy) %>

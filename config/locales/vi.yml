@@ -1,4 +1,9 @@
 vi:
+  ransack:
+    create_day: "Ngày tạo"
+    from_date: "Từ ngày"
+    to_date: "Tới ngày"
+    search: "Tìm"
   devise:
     confirmations:
       confirmed: "Email đã được xác thực thành công"
