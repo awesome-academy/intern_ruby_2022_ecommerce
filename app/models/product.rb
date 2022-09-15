@@ -7,7 +7,7 @@ class Product < ApplicationRecord
 
   accepts_nested_attributes_for :product_images, allow_destroy: true
 
-  delegate :name, to: :category, prefix: true
+  delegate :name, to: :category, prefix: true, allow_nil: true
 
   validates :name, :price, :quantity_in_stock, presence: true
 
@@ -22,4 +22,6 @@ class Product < ApplicationRecord
   scope :newest, ->{order created_at: :desc}
   scope :by_ids, ->(ids){where id: ids}
   scope :uncategorized, ->{where category_id: nil}
+
+  ransack_alias :product, :name
 end

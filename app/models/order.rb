@@ -28,6 +28,10 @@ class Order < ApplicationRecord
       DateTime.now.beginning_of_month..DateTime.now.end_of_month)
   end)
 
+  ransacker :created_at, type: :date do
+    Arel.sql("date(created_at)")
+  end
+
   private
 
   def update_branch

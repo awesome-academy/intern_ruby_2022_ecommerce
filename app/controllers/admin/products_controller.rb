@@ -3,7 +3,8 @@ class Admin::ProductsController < Admin::BaseController
   before_action :get_categories, only: %i(new edit show index)
 
   def index
-    filter_branch params[:filter]
+    @q = Product.ransack(params[:q])
+    @pagy, @products = pagy(@q.result(distinct: true))
   end
 
   def show
@@ -20,6 +21,7 @@ class Admin::ProductsController < Admin::BaseController
   def update
     if @product.update(product_params)
       flash[:success] = t "flashes.update_success"
+
       redirect_to admin_product_path(@product)
     else
       flash[:danger] = t "flashes.update_failed"
@@ -65,15 +67,5 @@ class Admin::ProductsController < Admin::BaseController
 
   def get_categories
     @categories = Category.all
-  end
-
-  def filter_branch filter
-    if filter == t("admin.product.filter.uncate")
-      @pagy, @products = pagy(Product.uncategorized,
-                              items: Settings.product.item)
-    else
-      @pagy, @products = pagy(Product.newest,
-                              items: Settings.product.item)
-    end
   end
 end

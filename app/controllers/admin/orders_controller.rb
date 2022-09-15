@@ -2,9 +2,13 @@ class Admin::OrdersController < Admin::BaseController
   before_action :find_order, only: %i(edit update)
 
   def index
-    @orders = Order.this_month.without_deleted.oldest
-    @pagy, @orders2 = pagy(Order.this_month.oldest,
-                           items: Settings.order.item)
+    @search = Order.this_month.without_deleted.oldest.ransack(params[:q])
+    @pagy, @orders = pagy @search.result
+  end
+
+  def search
+    index
+    render :index
   end
 
   def edit

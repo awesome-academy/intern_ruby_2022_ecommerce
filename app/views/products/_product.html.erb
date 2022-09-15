@@ -22,7 +22,7 @@
       >
         <%= form_with url: carts_path(id: product.id ), method: :post do |f| %>
           <fieldset>
-            <% if logged_in? %>
+            <% if user_signed_in? %>
               <%= f.hidden_field :quantily, value: 1, max: 10, min: Settings.carts.min_quantily %>
               <input
                 type="submit"

@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="dropdown">
+    <button class="dropbtn"><%= t("static_pages.filter") %></button>
+    <div class="dropdown-content">
+      <%= link_to t("static_pages.all"), products_path(q: {s: "created_at asc"}) %>
+      <%= link_to t("static_pages.newest"), products_path(q: {s: "created_at desc"}) %>
+      <%= link_to t("static_pages.price_increase"), products_path(q: {"category_id_null" => "true"}) %>
+      <%= link_to t("static_pages.price_decrease"), products_path(q: {"category_id_null" => "true"}) %>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <% if @q.result.any? %>
+    <% if @name.keys.first == "name_cont"%>
+      <% if !@name.nil? %>
+        <div>
+          <strong>
+            <p> <%= t("static_pages.search_result")+@name.values.first %></p>
+          </strong>
+        </div>
+      <% end %>
+    <% end %>
+    <%= render @products %>
+    <div class="clearfix"></div>
+    <%== pagy_bootstrap_nav(@pagy) %>
+  <% else %>
+    <h2 class="alert alert-danger">
+      <%= t "static_pages.product_not_found" %>
+    </h2>
+  <% end %>
+</div>

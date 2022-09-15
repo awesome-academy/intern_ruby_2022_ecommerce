@@ -6,12 +6,13 @@
       </div>
       <div class="card-body">
         <%= render "search_form" %>
+
         <table class = "table table-striped">
           <thead>
             <tr>
               <th><%= t "admin.product.name" %></th>
               <th><%= t "admin.product.price" %></th>
-              <th><%= t "admin.product.quantity_in_stock" %></th>
+              <th><%= sort_link(@q, :quantity_in_stock, t("admin.product.quantity_in_stock"), default_order: :desc) %></th>
               <th><%= t "admin.product.category" %></th>
               <th><%= t "admin.category.content" %></th>
             </tr>

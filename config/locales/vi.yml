@@ -1,4 +1,10 @@
 vi:
+  ransack:
+    create_day: "Ngày tạo"
+    from_date: "Từ ngày"
+    to_date: "Tới ngày"
+    search: "Tìm"
+    customer_name: "Tên khách hàng"
   devise:
     confirmations:
       confirmed: "Email đã được xác thực thành công"
@@ -203,7 +209,7 @@ vi:
       add_image: "Thêm ảnh"
       remove_image: "Xóa ảnh"
       filter:
-        select: "Chọn filter"
+        oldest: "Cũ nhất"
         newest: "Mới nhất"
         uncate: "Không được phân loại"
     user:

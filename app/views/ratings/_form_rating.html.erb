@@ -1,9 +1,9 @@
-<% if logged_in? && current_user.ordered?(@product.id) %>
+<% if user_signed_in? && current_user.ordered?(@product.id) %>
   <%= form_for build_rating, url: ratings_path do |f| %>
     <%= f.label t "static_pages.review" %>
     <span class="rating">
       <% for i in Settings.rate %>
-        <i class="fa fa-star" data-star="<%= i %>"></i> 
+        <i class="fa fa-star" data-star="<%= i %>"></i>
       <% end %>
       <%= f.hidden_field :star, value: 0 , id:"rating"%>
     </span>

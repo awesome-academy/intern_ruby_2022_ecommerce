@@ -11,7 +11,11 @@ Rails.application.routes.draw do
       get "search", to: "products#index"
       resources :static_pages
       resources :categories
-      resources :orders
+      resources :orders do
+        collection do
+          match "search" => "orders#search", via: [:get, :post], as: :search
+        end
+      end
       resources :products
       resources :users
       root "static_pages#index"
@@ -23,11 +27,7 @@ Rails.application.routes.draw do
         get :filter
       end
     end
-    resources :products do
-      collection do
-        get :result
-      end
-    end
+    resources :products
     resources :carts
     resources :orders do
       member do

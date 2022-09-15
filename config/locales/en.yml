@@ -1,4 +1,10 @@
 en:
+  ransack:
+    create_day: "Create day"
+    from_date: "From date"
+    to_date: "To date"
+    search: "search"
+    customer_name: "Customer's name"
   devise:
     confirmations:
       confirmed: "Your email address has been successfully confirmed."
@@ -130,6 +136,7 @@ en:
     change_fail: "Chang Failed"
     order_not_found: "Order not found"
     all: "All"
+    oldest: "Oldest"
     newest: "Newest"
     price_increase: "Price Increase"
     price_decrease: "Price Decrease"
@@ -211,7 +218,7 @@ en:
       add_image: "Add product image"
       remove_image: "Remove image"
       filter:
-        select: "Select filter"
+        oldest: "Oldest"
         newest: "Newest"
         uncate: "Uncategorized"
     user:

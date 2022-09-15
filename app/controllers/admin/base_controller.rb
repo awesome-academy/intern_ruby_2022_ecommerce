@@ -1,5 +1,4 @@
 class Admin::BaseController < ApplicationController
-  include SessionsHelper
   layout "layouts/application_admin"
 
   before_action :authenticate_user!
