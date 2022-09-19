@@ -83,7 +83,7 @@ Rails.application.configure do
     Bullet.add_footer = true
   end
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
+  config.action_mailer.default_url_options = { host: "http://127.0.0.1:3000", port: 3000 }
   config.action_mailer.smtp_settings = {
     user_name: ENV["mail_user_name"],
     password: ENV["mail_user_password"],

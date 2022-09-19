@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :confirmable
+         :recoverable, :rememberable, :validatable, :confirmable,
+         :omniauthable, omniauth_providers: %i(google_oauth2)
 
   enum role: {Admin: 0, User: 1}
   attr_accessor :remember_token, :activation_token, :reset_token
@@ -39,6 +40,14 @@ class User < ApplicationRecord
 
     def new_token
       SecureRandom.urlsafe_base64
+    end
+
+    def from_omniauth auth
+      user = User.find_by(email: auth.info.email)
+      user ||= User.create!(provider: auth.provider, uid: auth.uid,
+                            email: auth.info.email,
+                            password: Devise.friendly_token[0, 20])
+      user
     end
   end
 
