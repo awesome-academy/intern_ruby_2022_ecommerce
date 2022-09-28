@@ -1,0 +1,21 @@
+wb = xlsx_package.workbook
+
+wb.styles do |style|
+  highlight_cell = style.add_style(bg_color: "EFC376", :border=>Axlsx::STYLE_THIN_BORDER)
+  border = style.add_style(:border=>Axlsx::STYLE_THIN_BORDER)
+  currency = style.add_style(:format_code=>"#,##0đ;[Red]#,##0", :border=>Axlsx::STYLE_THIN_BORDER)
+    wb.add_worksheet(name: "Summary") do |sheet|
+    sheet.add_row ["STT", "Khách hàng", "Số đơn"], style: [nil, highlight_cell, highlight_cell]
+    if @orders.present?
+      stt = 1
+      @orders.each do |key, value|
+        sheet.add_row [
+            stt,
+            User.find_by(id: key).name,
+            value
+          ], style: [nil, border, border]
+        stt += 1
+      end
+    end
+  end
+end

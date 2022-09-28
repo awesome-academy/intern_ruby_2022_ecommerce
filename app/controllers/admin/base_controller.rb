@@ -5,6 +5,8 @@ class Admin::BaseController < ApplicationController
 
   check_authorization unless: :devise_controller?
 
+  skip_authorization_check only: :xlsx
+
   private
   def logged_in_admin
     return if admin_logged_in?

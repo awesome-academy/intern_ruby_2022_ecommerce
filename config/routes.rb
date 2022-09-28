@@ -23,6 +23,7 @@ Rails.application.routes.draw do
       resources :orders
       resources :products
       resources :users
+      resources :xlsx
       root "static_pages#index"
     end
     resources :ratings

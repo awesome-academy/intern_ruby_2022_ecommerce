@@ -1,4 +1,5 @@
 vi:
+  export_excel: "Xuất file excel"
   unauthorized: "Không được quyền truy cập"
   ransack:
     create_day: "Ngày tạo"

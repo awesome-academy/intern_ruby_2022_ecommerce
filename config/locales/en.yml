@@ -1,4 +1,5 @@
 en:
+  export_excel: "Export excel file"
   unauthorized: "Not authorized to access"
   ransack:
     create_day: "Create day"
