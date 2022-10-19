@@ -9,10 +9,17 @@ vi:
     customer_name: "Tên khách hàng"
     clear: "Xóa"
   devise:
+    shared:
+      _links:
+        confirm_instruct: "Chưa nhận được hướng dẫn xác thực?"
+        unlock_instruct: "Chưa nhận được hướng dẫn mở khóa?"
+        sign_in_with: "Đăng nhập với"
     confirmations:
       confirmed: "Email đã được xác thực thành công"
       send_instructions: "Bạn sẽ sớm nhận được email hướng dẫn xác thực email"
       send_paranoid_instructions: "Nếu email của bạn đã được lưu, bạn sẽ nhận được hướng dẫn xác thực email trong vài phút tới"
+      new:
+        resend: "Gửi lại hướng dẫn xác nhận"
     failure:
       already_authenticated: "Đã đăng nhập rồi"
       inactive: "Tài khoản của bạn chưa được kích hoạt"
@@ -26,13 +33,27 @@ vi:
     mailer:
       confirmation_instructions:
         subject: "Hướng dẫn xác thực"
+        welcome: "Xin chào"
+        you_can: "Hãy xác nhận email của bạn thông qua đường link sau"
+        confirm_my_account: "Xác nhận tài khoản của tôi"
       reset_password_instructions:
+        hello: "Xin chào"
+        someone: "Đã có yêu cầu để thay đổi mật khẩu. Để thay đổi có thể làm theo link bên dưới"
+        wont_change: "Nếu bạn không yêu cầu đổi mật khẩu, hãy bỏ qua email này, mật khẩu sẽ không bị thay đổi trừ khi bạn truy cập đường link"
         subject: "Hướng dẫn đặt lại mật khẩu"
       unlock_instructions:
+        hello: "Xin chào"
         subject: "Hướng dẫn mở khóa"
+        has_been_locked: "Tài khoản của bạn đã bị khóa do vượt quá số lần đăng nhập không thành công"
+        to_unlock: "Click vào link bên dưới để mở khóa tài khoản của bạn"
+        unlock_button: "Mở khóa tài khoản"
+        notify_you: "Chúng tôi đang liên hệ tới bạn để thông bào rằng mật khẩu của bạn đã được đổi thành"
       email_changed:
+        hello: "Xin chào"
+        notify_you: "Chúng tôi đang liên hệ tới bạn để thông bào rằng email của bạn đã được đổi thành"
         subject: "Email đã thay đổi"
       password_change:
+        hello: "Xin chào"
         subject: "Mật khẩu đã thay đổi"
     omniauth_callbacks:
       failure: "Không thể xác thực bạn từ %{kind} vì \"%{reason}\"."
@@ -43,6 +64,12 @@ vi:
       send_paranoid_instructions: "Nếu email của bạn đã được lưu, bạn sẽ nhận được hướng dẫn xác thực email trong vài phút tới"
       updated: "Mật khẩu đã được thay đổi. Bạn đã được đăng nhập vào"
       updated_not_active: "Đã thay đổi mật khẩu thành công"
+      edit:
+        header: "Thay mật khẩu"
+        change_btn: "Thay mật khẩu"
+      new:
+        header: "Bạn quên mật khẩu?"
+        send_btn: "Gửi hướng dẫn reset mật khẩu"
     registrations:
       destroyed: "Tạm biệt! Tài khoản của bạn đã được huy"
       signed_up: "Chào mừng! Bạn đã đăng ký thành công"
@@ -52,6 +79,12 @@ vi:
       update_needs_confirmation: "Bạn đã cập nhật tài khoản thành công. Bây giờ chúng tôi cần xác minh tài khoản email mới của bạn, hãy làm theo đường link được gửi đến email mới của bạn"
       updated: "Tải khoản của bạn đã được cập nhật thành công"
       updated_but_not_signed_in: "Tài khoản của bạn đã được cập nhật thành công nhưng vì mật khẩu đã bị thay đổi, bạn cầu đăng nhập lại"
+      edit:
+        header: "Chỉnh sửa"
+        waiting: "Đang đợi xác nhận"
+        cancel: "Hủy tài khoản của tôi"
+        unhappy: "Không hài lòng?"
+        back: "Quay lại"
     sessions:
       signed_in: "Đăng nhập thành công"
       signed_out: "Đăng xuât thành công"
@@ -60,6 +93,8 @@ vi:
       send_instructions: "Bạn sẽ nhận được email hướng dẫn mở khóa tài khoản trong vài phút tới"
       send_paranoid_instructions: "Nếu tài khoản của bạn tồn tại, bạn sẽ nhận được email hướng dẫn mở khóa tài khoản trong vài phút tới"
       unlocked: "Tài khoản của bạn đã đươc mở khóa. Hãy đăng nhập để tiếp tục"
+      new:
+        resend: "Gửi lại hướng dẫn mở khóa mật khẩu"
   submit: "Submit"
   flashes:
     alert_not_found: "Xin lỗi không tìm thấy"

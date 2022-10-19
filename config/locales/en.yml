@@ -9,10 +9,17 @@ en:
     customer_name: "Customer's name"
     clear: "Clear"
   devise:
+    shared:
+      _links:
+        confirm_instruct: "Haven't receive confirmation instructions?"
+        unlock_instruct: "Haven't receive unlock instructions?"
+        sign_in_with: "Sign in with"
     confirmations:
       confirmed: "Your email address has been successfully confirmed."
       send_instructions: "You will receive an email with instructions for how to confirm your email address in a few minutes."
       send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions for how to confirm your email address in a few minutes."
+      new:
+        resend: "Resend confirmation instructions"
     failure:
       already_authenticated: "You are already signed in."
       inactive: "Your account is not activated yet."
@@ -26,13 +33,27 @@ en:
     mailer:
       confirmation_instructions:
         subject: "Confirmation instructions"
+        welcome: "Welcome"
+        you_can: "You can confirm your email through this link"
+        confirm_my_account: "Confirm my account"
       reset_password_instructions:
+        hello: "Hello"
+        someone: "There has been a request for reset password link. To do so, click the following link"
+        wont_change: "If you didn't request this, ignore this email, your password won't be changed unless you click the link"
         subject: "Reset password instructions"
       unlock_instructions:
+        hello: "Hello"
         subject: "Unlock instructions"
+        has_been_locked: "Your account has been locked due to exceeding the number of failed attempts"
+        to_unlock: "Click the link below to unlock your account"
+        unlock_button: "Unlock my account"
+        notify_you: "We are contacting you to notify you that your password has been changed to"
       email_changed:
+        hello: "Hello"
+        notify_you: "We are contacting you to notify you that your email has been changed to"
         subject: "Email Changed"
       password_change:
+        hello: "Hello"
         subject: "Password Changed"
     omniauth_callbacks:
       failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
@@ -43,6 +64,12 @@ en:
       send_paranoid_instructions: "If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes."
       updated: "Your password has been changed successfully. You are now signed in."
       updated_not_active: "Your password has been changed successfully."
+      edit:
+        header: "Change password"
+        change_btn: "Change password"
+      new:
+        header: "Forgot your password?"
+        send_btn: "Send password reset instructions"
     registrations:
       destroyed: "Bye! Your account has been successfully cancelled. We hope to see you again soon."
       signed_up: "Welcome! You have signed up successfully."
@@ -52,6 +79,12 @@ en:
       update_needs_confirmation: "You updated your account successfully, but we need to verify your new email address. Please check your email and follow the confirmation link to confirm your new email address."
       updated: "Your account has been updated successfully."
       updated_but_not_signed_in: "Your account has been updated successfully, but since your password was changed, you need to sign in again."
+      edit:
+        header: "Edit"
+        waiting: "Waiting for confirmation"
+        cancel: "Cancel my account"
+        unhappy: "Unhappy?"
+        back: "Back"
     sessions:
       signed_in: "Signed in successfully."
       signed_out: "Signed out successfully."
@@ -60,6 +93,8 @@ en:
       send_instructions: "You will receive an email with instructions for how to unlock your account in a few minutes."
       send_paranoid_instructions: "If your account exists, you will receive an email with instructions for how to unlock it in a few minutes."
       unlocked: "Your account has been unlocked successfully. Please sign in to continue."
+      new:
+        resend: "Resend password unlock instructions"
   errors:
     messages:
       already_confirmed: "was already confirmed, please try signing in"

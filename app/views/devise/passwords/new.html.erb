@@ -1,0 +1,26 @@
+<div class="container seperate_lines">
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-4">
+      <h2><%= t ".header" %></h2>
+      <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+        <%= f.error_notification %>
+        <div class="form-inputs">
+          <%= f.input :email,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "email" } %>
+        </div>
+        <br><br>
+        <div class="form-actions">
+          <%= f.button :submit, t(".send_btn") %>
+        </div>
+      <% end %>
+      <br><br>
+      <%= render "devise/shared/links" %>
+    </div>
+    <div class="col-md-6">
+      <%= image_tag "confirmation.jpg" %>
+    </div>
+  </div>
+</div>

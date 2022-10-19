@@ -1,0 +1,28 @@
+<div class="container seperate_lines">
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-4">
+      <h2><%= t ".resend" %></h2>
+      <%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+        <%= f.error_notification %>
+        <%= f.full_error :confirmation_token %>
+        <div class="form-inputs">
+          <%= f.input :email,
+                required: true,
+                autofocus: true,
+                value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email),
+                input_html: { autocomplete: "email" } %>
+        </div>
+        <br><br>
+        <div class="form-actions">
+          <%= f.button :submit, t(".resend") %>
+        </div>
+      <% end %>
+      <br><br>
+      <%= render "devise/shared/links" %>
+    </div>
+    <div class="col-md-6">
+      <%= image_tag "confirmation.jpg" %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+<div class="container seperate_lines">
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-4">
+      <h2><%= t "static_pages.sign_up" %></h2>
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <div class="form-group mb-3">
+          <%= f.input :email,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "email" } %>
+        </div>
+        <br>
+        <div class="form-group mb-3">
+          <%= f.input :password,
+                required: true,
+                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                input_html: { autocomplete: "new-password" }%>
+        </div>
+        <div class="form-group mb-3">
+          <%= f.input :password_confirmation,
+                required: true,
+                input_html: { autocomplete: "new-password" }, class: "form-control" %>
+        </div>
+        <br>
+        <div class="form-group">
+          <%= f.submit t("static_pages.sign_up"), class: "btn btn-default" %>
+        </div>
+      <% end %>
+      <br>
+      <br>
+      <%= render "devise/shared/links" %>
+    </div>
+    <div class="col-md-6">
+      <%= image_tag "sign_up.png" %>
+    </div>
+  </div>
+</div>
